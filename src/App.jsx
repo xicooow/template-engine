@@ -130,7 +130,7 @@ const App = () => {
       <>
         <div>
           <p>
-            <label htmlFor='add-var-key'>Key: </label>
+            <label htmlFor='add-var-key'>Name: </label>
             <input
               type='text'
               id='add-var-key'
