@@ -214,11 +214,11 @@ const App = () => {
   return (
     <div className='app'>
       <section>
-        <p><strong>Variables Map:</strong></p>
+        <p><strong>Variables Map</strong></p>
         <div>{renderVariablesForm()}</div>
       </section>
       <section>
-        <p><strong>Template:</strong></p>
+        <p><strong>Template</strong></p>
         <div>{renderTemplateForm()}</div>
       </section>
       <section>
