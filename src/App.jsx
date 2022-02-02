@@ -5,12 +5,16 @@ import './App.css';
 const DELIMITERS_REGEXP = /[\$\{\}]/g;
 const TEMPLATE_VARS_REGEXP = /\$\{\w+\}/gi;
 
+/*eslint no-template-curly-in-string: 0*/
+const DEFAULT_TEMPLATE = 'Hello ${name}!';
+const DEFAULT_VARIABLES = [{ key: 'name', value: 'World' }];
+
 const App = () => {
   const [output, setOutput] = useState('');
-  const [template, setTemplate] = useState('');
   const [newVarKey, setNewVarKey] = useState('');
-  const [variables, setVariables] = useState([]);
   const [newVarValue, setNewVarValue] = useState('');
+  const [template, setTemplate] = useState(DEFAULT_TEMPLATE);
+  const [variables, setVariables] = useState(DEFAULT_VARIABLES);
 
   const canAddVariable = () => {
     return (newVarKey !== '') && (newVarValue !== '');
@@ -40,10 +44,16 @@ const App = () => {
   const clearInputs = () => {
     setNewVarKey('');
     setNewVarValue('');
+    clearOutput();
   };
 
   const clearTemplate = () => {
     setTemplate('');
+    clearOutput();
+  };
+
+  const clearOutput = () => {
+    setOutput('');
   };
 
   const checkErrors = (templateVarsName) => {
@@ -161,7 +171,7 @@ const App = () => {
       <>
         <div>
           <p>
-            <label htmlFor='modify-template'>Edit Template: </label>
+            <label htmlFor='modify-template'>Edit Template:</label>
             <input
               type='text'
               id='modify-template'
