@@ -3,7 +3,7 @@ import './App.css';
 
 /*eslint no-useless-escape: 0*/
 const DELIMITERS_REGEXP = /[\$\{\}]/g;
-const TEMPLATE_VARS_REGEXP = /\$\{\w+\}/gi;
+const TEMPLATE_VARS_REGEXP = /\$\{[\w\-]+\}/gi;
 
 /*eslint no-template-curly-in-string: 0*/
 const DEFAULT_TEMPLATE = 'Hello ${name}!';
