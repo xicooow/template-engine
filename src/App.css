@@ -14,10 +14,14 @@ button[type="button"] {
   font-size: 18px;
 }
 
+button[type="button"].link {
+  margin-bottom: 0;
+}
+
 .app {
-  width: 900px;
+  width: 936px;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 15px 0 50px;
   font-size: 18px;
   line-height: 18px;
 }
@@ -27,4 +31,15 @@ button[type="button"] {
   border: 1px solid black;
   border-radius: 5px;
   background-color: #e8e8e8;
+}
+
+.link {
+  background-color: transparent;
+  border: 0;
+  color: #00f;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  position: relative;
+  text-decoration: underline;
 }

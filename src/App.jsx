@@ -1,18 +1,32 @@
+/*eslint no-useless-escape: 0*/
+/*eslint no-template-curly-in-string: 0*/
+
 import React, { useState } from 'react';
 import './App.css';
 
-/*eslint no-useless-escape: 0*/
 const DELIMITERS_REGEXP = /[\$\{\}]/g;
 const TEMPLATE_VARS_REGEXP = /\$\{[\w\-]+\}/gi;
 
-/*eslint no-template-curly-in-string: 0*/
 const DEFAULT_TEMPLATE = 'Hello ${name}!';
 const DEFAULT_VARIABLES = [{ key: 'name', value: 'World' }];
+
+const TEMPLATE_VAR_PATTERNS = [
+  '${varname}',
+  '${var-name}',
+  '${var_name}',
+  '${VARNAME}',
+  '${VAR-NAME}',
+  '${VAR_NAME}',
+  '${VarName}',
+  '${Var-Name}',
+  '${Var_Name}'
+];
 
 const App = () => {
   const [output, setOutput] = useState('');
   const [newVarKey, setNewVarKey] = useState('');
   const [newVarValue, setNewVarValue] = useState('');
+  const [showHelpText, setShowHelpText] = useState(true);
   const [template, setTemplate] = useState(DEFAULT_TEMPLATE);
   const [variables, setVariables] = useState(DEFAULT_VARIABLES);
 
@@ -166,6 +180,37 @@ const App = () => {
     );
   };
 
+  const renderHelpTemplateVarsText = () => {
+    return (
+      <>
+        <p>
+          <button
+            type='button'
+            className='link'
+            onClick={() => setShowHelpText(!showHelpText)}
+          >
+            <small>{(showHelpText) ? 'hide' : 'show'}</small>
+          </button>
+          <small>Expected template variables' patterns:</small>
+        </p>
+        {
+          (!!showHelpText) &&
+          <ul>
+            {
+              TEMPLATE_VAR_PATTERNS.map((val, index) => {
+                return (
+                  <li key={index}>
+                    <small>{val}</small>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        }
+      </>
+    );
+  };
+
   const renderTemplateForm = () => {
     return (
       <>
@@ -179,8 +224,6 @@ const App = () => {
               onInput={e => setTemplate(e.target.value)}
             />
           </p>
-        </div>
-        <div>
           <p>
             <button
               type='button'
@@ -194,6 +237,9 @@ const App = () => {
           <code>
             {`${template}`}
           </code>
+        </div>
+        <div>
+          {renderHelpTemplateVarsText()}
         </div>
       </>
     );
@@ -223,16 +269,15 @@ const App = () => {
 
   return (
     <div className='app'>
-      <section>
+      <section id='variables'>
         <p><strong>Variables Map</strong></p>
         <div>{renderVariablesForm()}</div>
       </section>
-      <section>
+      <section id='template'>
         <p><strong>Template</strong></p>
         <div>{renderTemplateForm()}</div>
       </section>
-      <section>
-        <br />
+      <section id='output'>
         <hr />
         <div>{renderOutput()}</div>
       </section>
