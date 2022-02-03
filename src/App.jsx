@@ -26,7 +26,7 @@ const App = () => {
   const [output, setOutput] = useState('');
   const [newVarKey, setNewVarKey] = useState('');
   const [newVarValue, setNewVarValue] = useState('');
-  const [showHelpText, setShowHelpText] = useState(true);
+  const [showHelpText, setShowHelpText] = useState(false);
   const [template, setTemplate] = useState(DEFAULT_TEMPLATE);
   const [variables, setVariables] = useState(DEFAULT_VARIABLES);
 
@@ -38,7 +38,16 @@ const App = () => {
     return (template !== '') && (variables.length > 0);
   };
 
+  const existingVariableKey = (_key) => {
+    return variables.filter((val) => val.key === _key).length > 0;
+  };
+
   const addNewVariable = () => {
+    if (existingVariableKey(newVarKey)) {
+      setOutput('variables\' name must be unique');
+      return;
+    }
+
     const newVariables = [
       ...variables,
       {
@@ -191,7 +200,7 @@ const App = () => {
           >
             <small>{(showHelpText) ? 'hide' : 'show'}</small>
           </button>
-          <small>Expected template variables' patterns:</small>
+          <small>Expected template variables' patterns</small>
         </p>
         {
           (!!showHelpText) &&
