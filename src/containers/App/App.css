@@ -1,24 +1,5 @@
-input[type="text"] {
-  font-size: 18px;
-}
-
-input[type="text"]#modify-template {
-  width: 100%;
-  margin-top: 10px;
-  display: inline-block;
-}
-
-button[type="button"] {
-  margin-bottom: 12px;
-  margin-right: 12px;
-  font-size: 18px;
-}
-
-button[type="button"].link {
-  margin-bottom: 0;
-}
-
 .app {
+  position: relative;
   width: 936px;
   margin: 0 auto;
   padding: 15px 0 50px;

@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button[type="button"] {
+  margin-bottom: 12px;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+button[type="button"].link {
+  margin-bottom: 0;
+}
+
+input[type="text"] {
+  font-size: 18px;
+}
+
+input[type="text"].inline-block {
+  width: 100%;
+  margin-top: 10px;
+  display: inline-block;
+}

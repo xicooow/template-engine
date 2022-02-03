@@ -1,26 +1,14 @@
-/*eslint no-useless-escape: 0*/
-/*eslint no-template-curly-in-string: 0*/
-
 import React, { useState } from 'react';
+
+import {
+  DELIMITERS_REGEXP,
+  TEMPLATE_VARS_REGEXP,
+  DEFAULT_TEMPLATE,
+  DEFAULT_VARIABLES,
+  TEMPLATE_VAR_PATTERNS
+} from '../../constants';
+
 import './App.css';
-
-const DELIMITERS_REGEXP = /[\$\{\}]/g;
-const TEMPLATE_VARS_REGEXP = /\$\{[\w\-]+\}/gi;
-
-const DEFAULT_TEMPLATE = 'Hello ${name}!';
-const DEFAULT_VARIABLES = [{ key: 'name', value: 'World' }];
-
-const TEMPLATE_VAR_PATTERNS = [
-  '${varname}',
-  '${var-name}',
-  '${var_name}',
-  '${VARNAME}',
-  '${VAR-NAME}',
-  '${VAR_NAME}',
-  '${VarName}',
-  '${Var-Name}',
-  '${Var_Name}'
-];
 
 const App = () => {
   const [output, setOutput] = useState('');
@@ -229,6 +217,7 @@ const App = () => {
             <input
               type='text'
               id='modify-template'
+              className='inline-block'
               value={template}
               onInput={e => setTemplate(e.target.value)}
             />
