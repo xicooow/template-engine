@@ -1,7 +1,7 @@
 import {
   DELIMITERS_REGEXP,
   TEMPLATE_VARS_REGEXP,
-  ERRORS,
+  MESSAGES,
   replacer
 } from '../../constants';
 
@@ -9,14 +9,13 @@ const {
   NO_VARS_IN_TEMPLATE,
   MISSING_VAR,
   EXTRA_VAR
-} = ERRORS;
+} = MESSAGES;
 
 const Output = ({
   output,
   template,
   variables,
-  onSetOutput,
-  canRunTemplate
+  onSetOutput
 }) => {
   const removeDelimiters = (value) => value.replace(DELIMITERS_REGEXP, '');
 
@@ -71,12 +70,16 @@ const Output = ({
     }
   };
 
+  const canRunTemplate = () => {
+    return (template !== '') && (variables.length > 0);
+  };
+
   return (
     <div>
       <button
         type='button'
         onClick={runTemplate}
-        disabled={!canRunTemplate}
+        disabled={!canRunTemplate()}
       >
         Show Output
       </button>

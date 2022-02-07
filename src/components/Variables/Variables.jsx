@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
-import { ERRORS } from '../../constants';
+import { MESSAGES } from '../../constants';
 
 const {
   UNIQUE_VAR_NAME
-} = ERRORS;
+} = MESSAGES;
 
 const Variables = ({
   variables,
   onAddVariable,
   onDeleteVariable,
-  onError
+  onSetOutput
 }) => {
   const [newVarKey, setNewVarKey] = useState('');
   const [newVarValue, setNewVarValue] = useState('');
@@ -25,7 +25,7 @@ const Variables = ({
 
   const addVariable = () => {
     if (existingVariableKey(newVarKey)) {
-      onError(UNIQUE_VAR_NAME);
+      onSetOutput(UNIQUE_VAR_NAME);
     } else {
       onAddVariable({
         key: newVarKey,

@@ -17,11 +17,12 @@ export const TEMPLATE_VAR_PATTERNS = [
   '${Var_Name}'
 ];
 
-export const ERRORS = {
+export const MESSAGES = {
   UNIQUE_VAR_NAME: 'variables\' name must be unique',
   NO_VARS_IN_TEMPLATE: 'template does not have any variables',
   MISSING_VAR: '${%s} is missing in variables map',
-  EXTRA_VAR: '"%s" variable is not defined in template'
+  EXTRA_VAR: '"%s" variable is not defined in template',
+  CONFIRM_DELETE_VAR: 'Are you sure you want to delete the "%s" variable?'
 };
 
 export const replacer = (string, values) => {
