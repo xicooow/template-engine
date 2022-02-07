@@ -1,17 +1,8 @@
-import { createContext, useContext } from 'react';
+import { createContext } from 'react';
+
+import useConfirmDialog from './useConfirmDialog';
 
 export const ConfirmDialogContext = createContext({});
-
-export const useConfirmDialog = () => {
-  const { openDialog } = useContext(ConfirmDialogContext);
-
-  const confirm = (options) =>
-    new Promise((resolve) => {
-      openDialog({
-        ...options,
-        action: resolve
-      });
-    });
-
-  return { confirm };
+export {
+  useConfirmDialog
 };
