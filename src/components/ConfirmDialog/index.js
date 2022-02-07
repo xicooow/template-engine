@@ -1,4 +1,2 @@
-import ConfirmDialogProvider, { useConfirmDialog } from './ConfirmDialog';
-
-export { useConfirmDialog };
-export default ConfirmDialogProvider;
+import ConfirmDialog from './ConfirmDialog';
+export default ConfirmDialog;

@@ -4,7 +4,9 @@ import Variables from '../../components/Variables';
 import Template from '../../components/Template';
 import Output from '../../components/Output';
 
-import { useConfirmDialog } from '../../components/ConfirmDialog';
+import {
+  useConfirmDialog
+} from '../Contexts';
 
 import {
   DEFAULT_TEMPLATE,

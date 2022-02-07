@@ -1,7 +1,10 @@
 import './App.css';
 
 import Controller from '../Controller';
-import ConfirmDialogProvider from '../../components/ConfirmDialog';
+
+import {
+  ConfirmDialogProvider
+} from '../../containers/Providers';
 
 const App = () => {
   return (
