@@ -22,7 +22,8 @@ export const MESSAGES = {
   NO_VARS_IN_TEMPLATE: 'template does not have any variables',
   MISSING_VAR: '${%s} is missing in variables map',
   EXTRA_VAR: '"%s" variable is not defined in template',
-  CONFIRM_DELETE_VAR: 'Are you sure you want to delete the "%s" variable?'
+  CONFIRM_DELETE_VAR: 'Are you sure you want to delete the "%s" variable?',
+  EDIT_VAR_TITLE: 'You are editing the variable "%s"'
 };
 
 export const replacer = (string, values) => {

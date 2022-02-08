@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { cloneDeep } from 'lodash';
 
 import Variables from '../../components/Variables';
 import Template from '../../components/Template';
 import Output from '../../components/Output';
 
 import {
-  useConfirmDialog
+  useConfirmDialog,
+  useEditDialog
 } from '../Contexts';
 
 import {
@@ -20,11 +22,28 @@ const Controller = () => {
   const [template, setTemplate] = useState(DEFAULT_TEMPLATE);
   const [variables, setVariables] = useState(DEFAULT_VARIABLES);
 
+  const { edit } = useEditDialog();
   const { confirm } = useConfirmDialog();
 
   const handleAddVariable = (newVar) => {
     setVariables([...variables, newVar]);
     setOutput('');
+  };
+
+  const handleEditVariable = async (_var, index) => {
+    const editedVar = await edit({
+      title: 'Info',
+      message: replacer(MESSAGES.EDIT_VAR_TITLE, [_var.key]),
+      variable: { ..._var }
+    });
+
+    if (editedVar) {
+      const newVariables = cloneDeep(variables);
+      newVariables[index] = editedVar;
+
+      setVariables(newVariables);
+      setOutput('');
+    }
   };
 
   const handleDeleteVariable = async (_key) => {
@@ -49,6 +68,7 @@ const Controller = () => {
       <section id='variables'>
         <Variables
           onDeleteVariable={handleDeleteVariable}
+          onEditVariable={handleEditVariable}
           onAddVariable={handleAddVariable}
           onSetOutput={setOutput}
           variables={variables}

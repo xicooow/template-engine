@@ -3,14 +3,17 @@ import './App.css';
 import Controller from '../Controller';
 
 import {
-  ConfirmDialogProvider
-} from '../../containers/Providers';
+  ConfirmDialogProvider,
+  EditDialogProvider
+} from '../Providers';
 
 const App = () => {
   return (
     <div className='app'>
       <ConfirmDialogProvider>
-        <Controller />
+        <EditDialogProvider>
+          <Controller />
+        </EditDialogProvider>
       </ConfirmDialogProvider>
     </div>
   );

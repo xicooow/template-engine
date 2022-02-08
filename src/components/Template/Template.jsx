@@ -15,10 +15,10 @@ const Template = ({
       <div>
         <p>
           <label htmlFor='modify-template'>Edit Template:</label>
-          <input
+          <textarea
             type='text'
             id='modify-template'
-            className='inline-block'
+            className='template-textbox'
             value={template}
             onInput={e => onSetTemplate(e.target.value)}
           />

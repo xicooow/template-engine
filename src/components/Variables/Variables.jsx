@@ -10,6 +10,7 @@ const Variables = ({
   variables,
   onAddVariable,
   onDeleteVariable,
+  onEditVariable,
   onSetOutput
 }) => {
   const [newVarKey, setNewVarKey] = useState('');
@@ -42,7 +43,7 @@ const Variables = ({
 
   return (
     <>
-      <p><strong>Variables Map</strong></p>
+      <p><strong>Variables</strong></p>
       <div>
         <p>
           <label htmlFor='add-var-key'>Name: </label>
@@ -86,6 +87,13 @@ const Variables = ({
                       onClick={() => onDeleteVariable(variable.key)}
                     >
                       <small>delete</small>
+                    </button>
+                    <button
+                      type='button'
+                      className='link'
+                      onClick={() => onEditVariable(variable, index)}
+                    >
+                      <small>edit</small>
                     </button>
                   </li>
                 );

@@ -7,8 +7,8 @@ const ConfirmDialog = ({
 }) => {
   return (
     open && (
-      <div className='confirm-dialog'>
-        <div className='confirm-dialog-box'>
+      <div className='dialog'>
+        <div className='dialog-box'>
           <header>
             <h2>{title}</h2>
           </header>
